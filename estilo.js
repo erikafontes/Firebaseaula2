@@ -4,40 +4,54 @@ export default StyleSheet.create({
 
      container: {
     flex: 1,
-    backgroundColor: '#ded7eaff',
+    backgroundColor: '#ffffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   texthome:{
-   color: "#9370DB",
-     fontSize: 15, 
-    fontWeight:800
+   color: "#d3c727ff",
+     fontSize: 25, 
+    fontWeight:400,
+
   },
   home:{
     padding:10, //espaço nos cantos do botao
     borderRadius:10, //borda redonda
-    backgroundColor: "#ebe2ffff", //cor do botão
+    backgroundColor: "#eff5bdff", //cor do botão
     marginTop:15, //espaço externo do botão,
      paddingHorizontal:20,
   },
   ent:{
     padding:10, //espaço nos cantos do botao
     borderRadius:10, //borda redonda
-    backgroundColor: "#ebe2ffff", //cor do botão
+    backgroundColor: "rgba(255, 255, 255, 1)", //cor do botão
     marginTop:15, //espaço externo do botão,
     paddingHorizontal:160,
   },
   reg:{
     padding:10, //espaço nos cantos do botao
     borderRadius:10, //borda redonda
-    backgroundColor: "#ebe2ffff", //cor do botão
+    backgroundColor: "#rgba(255, 255, 255, 1)", //cor do botão
     marginTop:15, //espaço externo do botão,
-    paddingHorizontal:150,
+    paddingHorizontal:150
   },
   textlog:{
-    color: "#9370DB",
-     fontSize: 15, 
+    color: "#d3c727ff",
+    fontSize: 15, 
     fontWeight:800
-    }
+  },
+  textbotao:{
+
+     color: "#d3c727ff",
+     fontSize: 15, 
+     fontWeight:800
+  },
+
+  image:{
+     width: "100%",
+     height: 165, 
+     resizeMode: "contain"
+
+  },
 });
 

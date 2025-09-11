@@ -24,6 +24,8 @@ const cadastrar = () =>{
 }
   return (
     <View style={style.container}>
+          <Image style={style.image} source={require('../assets/borbsf.png')}/> 
+          
       <Text style={style.texthome}>Cadastro de Usuário</Text>
 
       <TextInput  style= {style.textlog} placeholder='Nome'  onChangeText={ texto => setNome(texto)} />
@@ -32,7 +34,7 @@ const cadastrar = () =>{
       <TextInput  style= {style.textlog} placeholder='Fone'  onChangeText={ texto => setFone(texto)}/>
     
     <TouchableOpacity style={style.home} onPress={cadastrar} >
-          <Text style={style.texthome}>Cadastrar</Text> 
+          <Text style={style.textbotao}>Cadastrar</Text> 
          </TouchableOpacity>
     </View>
   );

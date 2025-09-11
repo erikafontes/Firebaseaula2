@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity} from 'react-native';
+import { Button, StyleSheet, Text, TextInput, View, TouchableOpacity, Image} from 'react-native';
 
 import { auth } from '../firebase';
 import { useNavigation } from '@react-navigation/native';
@@ -24,7 +24,11 @@ export default function Login() {
 
   return (
     <View style={style.container}>
-      <Text style= {style.texthome}>Tela de Login</Text>
+
+      
+          <Image style={style.image} source={require('../assets/borbsf.png')}/> 
+
+      <Text style= {style.texthome}>Tela de login</Text>
       
       <TextInput style= {style.textlog} 
         placeholder='Email' 
@@ -33,16 +37,17 @@ export default function Login() {
 
       <TextInput style= {style.textlog} 
         placeholder='Senha' 
+        secureTextEntry = {true}
         onChangeText={senha => setSenha(senha)}
       /> 
     <TouchableOpacity style={style.ent} onPress={logar} >
-            <Text style={style.texthome}>Entrar</Text> 
+            <Text style={style.textbotao}>Entrar</Text> 
              </TouchableOpacity>
         
 
         
          <TouchableOpacity style={style.reg} onPress={()=> navigation.replace ('Registro')} >
-            <Text style={style.texthome}>Registrar</Text> 
+            <Text style={style.textbotao}>Registrar</Text> 
              </TouchableOpacity>
         
        
