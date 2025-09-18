@@ -17,7 +17,7 @@ export default function Login() {
     .signInWithEmailAndPassword(email,senha)
     .then (userCredentials => {
       console.log('Logado como: ', userCredentials.user.email)
-      navigation.replace("Home");
+      navigation.replace("Menu");
     })
     .catch(erro => alert(erro.message))
   }
@@ -25,7 +25,7 @@ export default function Login() {
   return (
     <View style={style.container}>
 
-      
+      52
           <Image style={style.image} source={require('../assets/borbsf.png')}/> 
 
       <Text style= {style.texthome}>Tela de login</Text>

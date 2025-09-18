@@ -1,41 +1,89 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity } from 'react-native';
-import { auth } from '../firebase';
+import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity, Image } from 'react-native';
+import { auth, firestore } from '../firebase';
 import { useNavigation } from '@react-navigation/native';
 import style from "../estilo"
 
-export default function Registro() {
-const navigation = useNavigation ();
+import { Usuario } from '../model/Usuário';
 
-const[nome, setNome]   = useState('');
-const[email, setEmail] = useState('');
-const[senha, setSenha] = useState('');
-const[fone, setFone]   = useState('');
+export default function Registro() {
+
+  const [formUsuario, setFormUsuario] = useState<Partial<Usuario>>({})
+
+  const navigation = useNavigation ();
 
 const cadastrar = () =>{
   auth
-  .createUserWithEmailAndPassword (email,senha)
+  .createUserWithEmailAndPassword (formUsuario.email, formUsuario.senha)
   .then (userCredentials =>{
   console.log('Logado como: ', userCredentials.user.email)
-  navigation.replace('Home')
-   })
 
-}
+  const refUsuario = firestore.collection("Usuario");
+  const idUsuario = refUsuario.doc(auth.currentUser.uid);
+  idUsuario.set({
+    id  : auth.currentUser.uid,
+    nome : formUsuario.nome,
+    email : formUsuario.email,
+    senha : formUsuario.senha,
+    fone: formUsuario.fone
+     })
+      navigation.replace('Menu')
+   })
+   .cath(erro => alert(erro.message))
+ }
+ 
+
+
   return (
     <View style={style.container}>
           <Image style={style.image} source={require('../assets/borbsf.png')}/> 
           
       <Text style={style.texthome}>Cadastro de Usuário</Text>
 
-      <TextInput  style= {style.textlog} placeholder='Nome'  onChangeText={ texto => setNome(texto)} />
-      <TextInput  style= {style.textlog}  placeholder='Email' onChangeText={ texto => setEmail(texto)}/>
-      <TextInput  style= {style.textlog}  placeholder='Senha' onChangeText={ texto => setSenha(texto)}/>
-      <TextInput  style= {style.textlog} placeholder='Fone'  onChangeText={ texto => setFone(texto)}/>
+      <TextInput  
+      style= {style.textlog} 
+      placeholder='Nome'  
+       onChangeText={ texto => setFormUsuario
+        ({...formUsuario,
+          nome: texto})
+       }
+       />
+
+      <TextInput  style= {style.textlog}
+        placeholder='Email'
+         onChangeText={ texto => setFormUsuario
+        ({...formUsuario,
+          email: texto})
+      }
+         />
+
+      <TextInput  style= {style.textlog} 
+       placeholder='Senha'
+        onChangeText={ texto => setFormUsuario
+        ({...formUsuario,
+          senha: texto})
+      }
+        />
+
+      <TextInput  style= {style.textlog} 
+      placeholder='Fone' 
+       onChangeText={ texto =>setFormUsuario
+        ({...formUsuario,
+          fone: texto})
+      }
+       />
     
     <TouchableOpacity style={style.home} onPress={cadastrar} >
           <Text style={style.textbotao}>Cadastrar</Text> 
          </TouchableOpacity>
+
+          {/* <TouchableOpacity style={style.ent} onPress={sair} >
+                     <Text style={style.textbotao}>Entrar</Text> 
+                      </TouchableOpacity>
+                  */}
+         
     </View>
   );
 }
+
