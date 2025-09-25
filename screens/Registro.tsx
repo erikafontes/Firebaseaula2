@@ -30,14 +30,14 @@ const cadastrar = () =>{
      })
       navigation.replace('Menu')
    })
-   .cath(erro => alert(erro.message))
+  //  .cath(erro => alert(erro.message))
  }
  
 
 
   return (
     <View style={style.container}>
-          <Image style={style.image} source={require('../assets/borbsf.png')}/> 
+          <Image style={style.image} source={require('../assets/logo.png')}/> 
           
       <Text style={style.texthome}>Cadastro de Usuário</Text>
 

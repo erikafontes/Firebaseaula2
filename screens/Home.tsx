@@ -18,7 +18,7 @@ export default function Home() {
   return (
     <View style={style.container}>
 
-           <Image style={style.image} source={require('../assets/borb.png')}/> 
+           <Image style={style.image} source={require('../assets/logo.png')}/> 
 
       <Text style={style.texthome}> Bem vindo!</Text>
 

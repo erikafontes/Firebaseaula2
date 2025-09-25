@@ -2,22 +2,22 @@ import { StyleSheet} from "react-native";
 
 export default StyleSheet.create({
 
-     container: {
+    container: {
     flex: 1,
     backgroundColor: '#ffffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },
   texthome:{
-   color: "#d3c727ff",
+   color: "#000000ff",
      fontSize: 25, 
-    fontWeight:400,
+    fontWeight:600,
 
   },
   home:{
     padding:10, //espaço nos cantos do botao
     borderRadius:10, //borda redonda
-    backgroundColor: "#eff5bdff", //cor do botão
+    backgroundColor: "#000000ff", //cor do botão
     marginTop:15, //espaço externo do botão,
      paddingHorizontal:20,
   },
@@ -31,20 +31,20 @@ export default StyleSheet.create({
   reg:{
     padding:10, //espaço nos cantos do botao
     borderRadius:10, //borda redonda
-    backgroundColor: "#rgba(255, 255, 255, 1)", //cor do botão
+    backgroundColor: "#1b8dffff", //cor do botão
     marginTop:15, //espaço externo do botão,
     paddingHorizontal:150
   },
   textlog:{
-    color: "#d3c727ff",
+    color: "#000000ff",
     fontSize: 15, 
     fontWeight:800
   },
   textbotao:{
 
-     color: "#d3c727ff",
-     fontSize: 15, 
-     fontWeight:800
+     color: "#ffffffff",
+     fontSize: 17, 
+     fontWeight:500
   },
 
   image:{

@@ -1,9 +1,9 @@
 export class Usuario {
-    public id:    string;
-    public nome:  string;
-    public email: string;
-    public senha: string;
-    public fone:  string;
+    public id    : string;
+    public nome  : string;
+    public email : string;
+    public senha : string;
+    public fone  : string;
 
 constructor(obj?: Partial <Usuario>){
     if (obj){
@@ -27,11 +27,11 @@ constructor(obj?: Partial <Usuario>){
 
  toFirestore (){
     const usuario = {
-        id   : this.id,
-        nome : this.nome,
+        id    : this.id,
+        nome  : this.nome,
         email : this.email,
         senha : this.senha,
-        fone : this.fone
+        fone  : this.fone
     }
     return usuario
  }
