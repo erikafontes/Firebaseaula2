@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity, Image } fr
 import { auth, firestore } from '../firebase';
 import { useNavigation } from '@react-navigation/native';
 import style from "../estilo"
+import { Picker } from '@react-native-picker/picker';
 
 import { Ocorrencia } from '../model/Ocorrencia';
 
@@ -13,7 +14,7 @@ export default function ocorrencia() {
 
   const navigation = useNavigation ();
 
-const Registrar = () =>{
+const Registro = () =>{
    const refOcorrencia = firestore.collection("Usuario")
     .doc(auth.currentUser?.uid)
     .collection("Ocorrências")
@@ -24,18 +25,19 @@ const novaoco = new Ocorrencia(formOcorrencia);
    novaoco.id = idOcorrencia.id;
    idOcorrencia.set(novaoco.toFirestore())
 
-   alert("Ocorrência registrada com sucesso.")
+   alert("Ocorrência finalizada com sucesso.")
 
    setFormOcorrencia({})
 }
 
 
   return (
+    
     <View style={style.container}>
          <Image style={style.image} source={require('../assets/logo.png')}/> 
           
-      <Text style={style.texthome}>Registro de Ocorrência</Text>
 
+   <View style = {style.inputview}> 
       <TextInput  
         style= {style.textlog} 
         placeholder='Data'  
@@ -46,42 +48,35 @@ const novaoco = new Ocorrencia(formOcorrencia);
         value={formOcorrencia.data}
        />
 
-      <TextInput 
-        style= {style.textlog}
-        placeholder='Hora'
-        onChangeText={ texto => setFormOcorrencia
+    <View style={style.picker}>
+          <Picker mode='dropdown'
+          prompt="Selecione a origem da Denúncia"
+          onValueChange={ texto => setFormOcorrencia
         ({...formOcorrencia,
-        hora: texto})
-        }
-         value={formOcorrencia.hora}
-         />
+        origem: texto})}
+          >
+            <Picker.Item label = "Selecione a origem da denúncia" value="0" />
+            <Picker.Item label = "Via WhatsApp"   value= "Via WhatsApp" />
+            <Picker.Item label = "Via Telefonema" value= "Telefonema"   />
+            <Picker.Item label = "Via Email"      value= "Via Email"    />
+            <Picker.Item label = "Presencial"     value= "Presencial"   />
+          </Picker>  
+          </View>
+  <Picker mode='dropdown'
+          prompt="Selecione a origem da Denúncia"
+          onValueChange={ texto => setFormOcorrencia
+        ({...formOcorrencia,
+        tipo: texto})}
+          >
+            <Picker.Item label = "Selecione o tipo de crime" value="0" />
+            <Picker.Item label = "Crime Ambiental"   value= "Crime Ambiental" />
+            <Picker.Item label = "Crime Animal" value= "Crime Animal"   />
+          </Picker>  
+        
 
-      <TextInput  style= {style.textlog} 
-        placeholder='Tipo'
-        onChangeText={ texto => setFormOcorrencia
-        ({...formOcorrencia,
-        tipo: texto})
-        }
-         value={formOcorrencia.tipo}
-        />
 
-      <TextInput  style= {style.textlog} 
-        placeholdeenderecor='Vítima' 
-        onChangeText={ texto =>setFormOcorrencia
-        ({...formOcorrencia,
-        vitima: texto})
-        }
-         value={formOcorrencia.vitima}
-       />
 
-        <TextInput  style= {style.textlog} 
-      placeholder='Tipo de Ocorrência' 
-       onChangeText={ texto =>setFormOcorrencia
-        ({...formOcorrencia,
-          tipooc: texto})
-        }
-         value={formOcorrencia.tipooc}
-       />
+
         <TextInput  style= {style.textlog} 
       placeholder='Endereço' 
        onChangeText={ texto =>setFormOcorrencia
@@ -91,24 +86,28 @@ const novaoco = new Ocorrencia(formOcorrencia);
          value={formOcorrencia.endereco}
        />
 
+
+      <TextInput  style= {style.textlog} 
+        placeholder='Denúncia' 
+        onChangeText={ texto =>setFormOcorrencia
+        ({...formOcorrencia,
+        denuncia: texto})
+        }
+         value={formOcorrencia.denuncia}
+       />
+
         <TextInput  style= {style.textlog} 
-      placeholder='Agressor' 
+      placeholder='Fotos' 
        onChangeText={ texto =>setFormOcorrencia
        ({...formOcorrencia,
-       agressor: texto})
+       foto: texto})
       }
-       value={formOcorrencia.agressor}
+       value={formOcorrencia.foto}
        />
-    
-    <TouchableOpacity style={style.home} onPress={Registrar} >
-          <Text style={style.textbotao}>Cadastrar</Text> 
+     </View>
+    <TouchableOpacity style={style.reg} onPress={Registro} >
+          <Text style={style.textbotaocad}>Finalizar</Text> 
          </TouchableOpacity>
-
-          {/* <TouchableOpacity style={style.ent} onPress={sair} >
-                     <Text style={style.textbotao}>Entrar</Text> 
-                      </TouchableOpacity>
-                  */}
-         
     </View>
   );
 }

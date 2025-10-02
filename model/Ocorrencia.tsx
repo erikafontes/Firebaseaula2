@@ -1,49 +1,46 @@
 export class Ocorrencia {
-    public id       : string;
-    public data     : string;
-    public hora     : string;
-    public tipo     : string;
-    public vitima   : string;
-    public tipooc   : string;
-    public endereco : string;
-    public agressor : string;
+    public id      : string;
+    public data    : string;
+    public origem  : string;
+    public tipo  : string;
+    public endereco: string;
+    public denuncia: string;
+    public foto    : string;
+
 
 constructor(obj?: Partial <Ocorrencia>){
     if (obj){
     this.id       =  obj.id
     this.data     =  obj.data
-    this.hora     =  obj.hora
     this.tipo     =  obj.tipo
-    this.vitima   =  obj.vitima
-    this.tipooc   =  obj.tipooc
+    this.origem   =  obj.origem
     this.endereco =  obj.endereco
-    this.agressor =  obj.agressor
+    this.denuncia =  obj.denuncia
+    this.foto     =  obj.foto
     }
  } 
   toString(){
     const objeto = `{
         "id"      :  "${this.id}",
         "data"    :  "${this.data}",
-        "hora"    :  "${this.hora}",
-        "tipo"    :  "${this.tipo}",
-        "vitima"  :  "${this.vitima}"
-        "tipooc"  :  "${this.tipooc}"
+        "origem"  :  "${this.origem}",
+         "tipo"  :  "${this.tipo}",
         "endereco":  "${this.endereco}"
-        "agressor":  "${this.agressor}"
+        "denuncia":  "${this.denuncia}"
+        "foto"    :  "${this.foto}"
     }`
   return objeto
  }
 
  toFirestore (){
     const ocorrencia = {
-        id   :     this.id,
-        data :     this.data,
-        hora :     this.hora,
-        tipo :     this.tipo,
-        vitima :   this.vitima,
-        tipooc :   this.tipooc,
-        endereco : this.endereco,
-        agressor : this.agressor
+        id       :     this.id,
+        data     :     this.data,
+        origem   :     this.origem,
+         tipo   :     this.tipo,
+        endereco :     this.endereco,
+        denuncia :     this.denuncia,
+        foto     :     this.foto
     }
     return ocorrencia
  }

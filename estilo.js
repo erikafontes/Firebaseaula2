@@ -24,9 +24,11 @@ export default StyleSheet.create({
   ent:{
     padding:10, //espaço nos cantos do botao
     borderRadius:10, //borda redonda
-    backgroundColor: "rgba(255, 255, 255, 1)", //cor do botão
+    backgroundColor: "#fff", //cor do botão
     marginTop:15, //espaço externo do botão,
     paddingHorizontal:160,
+    borderColor: "#1b8dffff",
+    borderWidth:1
   },
   reg:{
     padding:10, //espaço nos cantos do botao
@@ -38,9 +40,15 @@ export default StyleSheet.create({
   textlog:{
     color: "#000000ff",
     fontSize: 15, 
-    fontWeight:800
+    fontWeight:400
   },
-  textbotao:{
+  textbotaoent:{
+
+     color: "#000000ff",
+     fontSize: 17, 
+     fontWeight:500
+  },
+  textbotaocad:{
 
      color: "#ffffffff",
      fontSize: 17, 
@@ -53,5 +61,13 @@ export default StyleSheet.create({
      resizeMode: "contain"
 
   },
-});
+  inputview:{
+   width:"90%",
+   marginBottom: 20
+  },
+  picker:{
+     paddingLeft:1
+
+   }
+}); 
 

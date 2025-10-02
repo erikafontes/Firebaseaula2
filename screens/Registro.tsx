@@ -6,6 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import style from "../estilo"
 
 import { Usuario } from '../model/Usuário';
+import Login from './Login';
 
 export default function Registro() {
 
@@ -75,13 +76,13 @@ const cadastrar = () =>{
        />
     
     <TouchableOpacity style={style.home} onPress={cadastrar} >
-          <Text style={style.textbotao}>Cadastrar</Text> 
+          <Text style={style.textbotaocad}>Cadastrar</Text> 
          </TouchableOpacity>
 
-          {/* <TouchableOpacity style={style.ent} onPress={sair} >
-                     <Text style={style.textbotao}>Entrar</Text> 
+          <TouchableOpacity style={style.ent} onPress={Login} >
+                     <Text style={style.textbotaoent}>Entrar</Text> 
                       </TouchableOpacity>
-                  */}
+            
          
     </View>
   );
