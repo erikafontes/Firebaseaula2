@@ -12,7 +12,7 @@ export default function Login() {
 
   const navigation = useNavigation();
 
-  const logar = () => {
+  const Login = () => {
     auth
     .signInWithEmailAndPassword(email,senha)
     .then (userCredentials => {
@@ -40,7 +40,7 @@ export default function Login() {
         secureTextEntry = {true}
         onChangeText={senha => setSenha(senha)}
       /> 
-    <TouchableOpacity style={style.ent} onPress={logar} >
+    <TouchableOpacity style={style.ent} onPress={Login} >
             <Text style={style.textbotao}>Entrar</Text> 
              </TouchableOpacity>
         

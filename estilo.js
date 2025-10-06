@@ -17,7 +17,7 @@ export default StyleSheet.create({
   home:{
     padding:10, //espaço nos cantos do botao
     borderRadius:10, //borda redonda
-    backgroundColor: "#000000ff", //cor do botão
+    backgroundColor: "#1b8dffff", //cor do botão
     marginTop:15, //espaço externo do botão,
      paddingHorizontal:20,
   },

@@ -24,7 +24,7 @@ export default function Home() {
 
 
     <TouchableOpacity style={style.home} onPress={sair} >
-      <Text style={style.textbotao}>Logout</Text> 
+      <Text style={style.textbotaocad}>Logout</Text> 
      </TouchableOpacity>
 
     </View>

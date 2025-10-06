@@ -36,7 +36,7 @@ export default function ListarOcorrencia() {
         data={ocorrencias}
         renderItem={({item}) => (
             <View>
-                <Text>Crimes: {item.tipo}</Text>
+                <Text>{item.tipo}</Text>
             </View>
 
         )}

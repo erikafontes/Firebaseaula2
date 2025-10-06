@@ -75,11 +75,11 @@ const cadastrar = () =>{
       }
        />
     
-    <TouchableOpacity style={style.home} onPress={cadastrar} >
+    <TouchableOpacity style={style.reg} onPress={cadastrar} >
           <Text style={style.textbotaocad}>Cadastrar</Text> 
          </TouchableOpacity>
 
-          <TouchableOpacity style={style.ent} onPress={Login} >
+          <TouchableOpacity style={style.ent} onPress={()=> navigation.replace ('Login')} >
                      <Text style={style.textbotaoent}>Entrar</Text> 
                       </TouchableOpacity>
             
