@@ -65,9 +65,17 @@ export default StyleSheet.create({
    width:"90%",
    marginBottom: 20
   },
+  
   picker:{
      paddingLeft:1
 
+   },
+   botaorel:{
+    padding:10, //espaço nos cantos do botao
+    borderRadius:10, //borda redonda
+    backgroundColor: "#1b8dffff", //cor do botão
+    marginTop:15, //espaço externo do botão,
+    paddingHorizontal:150
    }
 }); 
 

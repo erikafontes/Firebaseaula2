@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity, Image } from 'react-native';
 import { auth, firestore } from '../firebase';
 import { useNavigation } from '@react-navigation/native';
@@ -7,10 +7,20 @@ import style from "../estilo"
 import { Picker } from '@react-native-picker/picker';
 
 import { Ocorrencia } from '../model/Ocorrencia';
+import { useRoute } from '@react-navigation/native';
+
 
 export default function ocorrencia() {
 
   const [formOcorrencia, setFormOcorrencia] = useState<Partial<Ocorrencia>>({})
+
+  const route = useRoute(); //cria a rota oara receber a ocorrencia no editar
+
+  useEffect( () => { ;//recebe o objeto ocorrencia para editar
+    if (route.params){
+      setFormOcorrencia(route.params.ocorrencias); //preenche o form com a ocorrencia para editar
+    }
+  }, [route.params])
 
   const navigation = useNavigation ();
 
@@ -19,15 +29,23 @@ const Registro = () =>{
     .doc(auth.currentUser?.uid)
     .collection("Ocorrências")
 
-const novaoco = new Ocorrencia(formOcorrencia);
+    const novaoco = new Ocorrencia(formOcorrencia);
 
-  const idOcorrencia = refOcorrencia.doc();
+    if(formOcorrencia.id){
+       const idOcorrencia = refOcorrencia.doc(formOcorrencia.id);
+
+       idOcorrencia.update(novaoco.toFirestore())
+       .then( () => {
+         alert("Ocorrencia atualizada!")
+       })
+    } else{
+      const idOcorrencia = refOcorrencia.doc();
    novaoco.id = idOcorrencia.id;
    idOcorrencia.set(novaoco.toFirestore())
 
    alert("Ocorrência finalizada com sucesso.")
-
    setFormOcorrencia({})
+    }
 }
 
 
@@ -35,12 +53,28 @@ const novaoco = new Ocorrencia(formOcorrencia);
     
     <View style={style.container}>
          <Image style={style.image} source={require('../assets/logo.png')}/> 
-          
-
+          <Text style={style.textbotaoent}>FORMULÁRIO INTERNO PARA CONTROLE </Text>
+          <Text style={style.textbotaoent}>DE DENÚNCIAS DE MAUS-TRATOS AOS ANIMAIS</Text>
    <View style = {style.inputview}> 
-      <TextInput  
+     
+    <View style={style.picker}>
+          <Picker mode='dropdown'
+          prompt= "Fonte da denúncia"
+          onValueChange={ texto => setFormOcorrencia
+        ({...formOcorrencia,
+        origem: texto})}
+        //selectedValue={formOcorrencia.}
+          >
+            <Picker.Item label = "1. Fonte da denúncia" value="0" />
+            <Picker.Item label = "Via WhatsApp"   value= "Via WhatsApp" />
+            <Picker.Item label = "Via Telefonema" value= "Telefonema"   />
+            <Picker.Item label = "Via Email"      value= "Via Email"    />
+            <Picker.Item label = "Presencial"     value= "Presencial"   />
+          </Picker>  
+  
+           <TextInput  
         style= {style.textlog} 
-        placeholder='Data'  
+        placeholder='1.2 Data e hora do recebimento'  
         onChangeText={ texto => setFormOcorrencia
         ({...formOcorrencia,
         data: texto})
@@ -48,20 +82,18 @@ const novaoco = new Ocorrencia(formOcorrencia);
         value={formOcorrencia.data}
        />
 
-    <View style={style.picker}>
-          <Picker mode='dropdown'
-          prompt="Selecione a origem da Denúncia"
-          onValueChange={ texto => setFormOcorrencia
+<Text style={style.textbotaoent}>                  2. DADOS DA DENÚNCIA:</Text>
+         
+        <TextInput  style= {style.textlog} 
+      placeholder='2.1 Endereço' 
+       onChangeText={ texto =>setFormOcorrencia
         ({...formOcorrencia,
-        origem: texto})}
-          >
-            <Picker.Item label = "Selecione a origem da denúncia" value="0" />
-            <Picker.Item label = "Via WhatsApp"   value= "Via WhatsApp" />
-            <Picker.Item label = "Via Telefonema" value= "Telefonema"   />
-            <Picker.Item label = "Via Email"      value= "Via Email"    />
-            <Picker.Item label = "Presencial"     value= "Presencial"   />
-          </Picker>  
-          </View>
+          endereco: texto})
+        }
+         value={formOcorrencia.endereco}
+       />
+
+ </View>
   <Picker mode='dropdown'
           prompt="Selecione a origem da Denúncia"
           onValueChange={ texto => setFormOcorrencia
@@ -73,19 +105,20 @@ const novaoco = new Ocorrencia(formOcorrencia);
             <Picker.Item label = "Crime Animal" value= "Crime Animal"   />
           </Picker>  
         
-
-
-
-
-        <TextInput  style= {style.textlog} 
-      placeholder='Endereço' 
-       onChangeText={ texto =>setFormOcorrencia
+  <Picker mode='dropdown'
+          prompt="Espécie de animais"
+          onValueChange={ texto => setFormOcorrencia
         ({...formOcorrencia,
-          endereco: texto})
-        }
-         value={formOcorrencia.endereco}
-       />
-
+        origem: texto})}
+          >
+            <Picker.Item label = "Espécie de animais" value="0" />
+            <Picker.Item label = "Cães"   value= "Cães" />
+            <Picker.Item label = "Gatos" value= "Gatos"   />
+            <Picker.Item label = "Equinos"      value= "Equinos"    />
+            <Picker.Item label = "Aves"     value= "Aves"   />
+            <Picker.Item label = "Outros"     value= "Outros"   />
+          </Picker>  
+         
 
       <TextInput  style= {style.textlog} 
         placeholder='Denúncia' 
