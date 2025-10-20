@@ -74,7 +74,7 @@ const Registro = () =>{
   
            <TextInput  
         style= {style.textlog} 
-        placeholder='1.2 Data e hora do recebimento'  
+        placeholder='1.2. Data e hora do recebimento:'  
         onChangeText={ texto => setFormOcorrencia
         ({...formOcorrencia,
         data: texto})
@@ -82,10 +82,10 @@ const Registro = () =>{
         value={formOcorrencia.data}
        />
 
-<Text style={style.textbotaoent}>                  2. DADOS DA DENÚNCIA:</Text>
+<Text style={style.textbotaoent}>                     2. DADOS DA DENÚNCIA:</Text>
          
         <TextInput  style= {style.textlog} 
-      placeholder='2.1 Endereço' 
+      placeholder='2.1. Endereço:' 
        onChangeText={ texto =>setFormOcorrencia
         ({...formOcorrencia,
           endereco: texto})
@@ -111,7 +111,7 @@ const Registro = () =>{
         ({...formOcorrencia,
         origem: texto})}
           >
-            <Picker.Item label = "Espécie de animais" value="0" />
+            <Picker.Item label = "2.2. Espécie de animais" value="0" />
             <Picker.Item label = "Cães"   value= "Cães" />
             <Picker.Item label = "Gatos" value= "Gatos"   />
             <Picker.Item label = "Equinos"      value= "Equinos"    />
@@ -121,7 +121,16 @@ const Registro = () =>{
          
 
       <TextInput  style= {style.textlog} 
-        placeholder='Denúncia' 
+        placeholder='2.3. Quantidade:' 
+        onChangeText={ texto =>setFormOcorrencia
+        ({...formOcorrencia,
+       quantidade: texto})
+        }
+         value={formOcorrencia.quantidade}
+       />
+
+        <TextInput  style= {style.textlog} 
+        placeholder='2.4. Situação denunciada:' 
         onChangeText={ texto =>setFormOcorrencia
         ({...formOcorrencia,
         denuncia: texto})
@@ -130,14 +139,62 @@ const Registro = () =>{
        />
 
         <TextInput  style= {style.textlog} 
-      placeholder='Fotos' 
+      placeholder='Fotos do Ocorrido:' 
        onChangeText={ texto =>setFormOcorrencia
        ({...formOcorrencia,
        foto: texto})
       }
        value={formOcorrencia.foto}
        />
+       <Text style={style.textbotaoent}>                  3. DADOS DO PROPRIETÀRIO:</Text>
+
+ <TextInput  style= {style.textlog} 
+      placeholder='Nome:' 
+       onChangeText={ texto =>setFormOcorrencia
+       ({...formOcorrencia,
+       nome: texto})
+      }
+       value={formOcorrencia.nome}
+       />
+
+       <TextInput  style= {style.textlog} 
+      placeholder='RG:' 
+       onChangeText={ texto =>setFormOcorrencia
+       ({...formOcorrencia,
+       rg: texto})
+      }
+       value={formOcorrencia.rg}
+       />
+
+       <TextInput  style= {style.textlog} 
+      placeholder='CPF:' 
+       onChangeText={ texto =>setFormOcorrencia
+       ({...formOcorrencia,
+       cpf: texto})
+      }
+       value={formOcorrencia.cpf}
+       />
+
+       <TextInput  style= {style.textlog} 
+      placeholder='Telefone:' 
+       onChangeText={ texto =>setFormOcorrencia
+       ({...formOcorrencia,
+       telefone: texto})
+      }
+       value={formOcorrencia.telefone}
+       />
+
+<TextInput  style= {style.textlog} 
+      placeholder='Endereço:' 
+       onChangeText={ texto =>setFormOcorrencia
+       ({...formOcorrencia,
+       enderecop: texto})
+      }
+       value={formOcorrencia.enderecop}
+       />
+       
      </View>
+     
     <TouchableOpacity style={style.reg} onPress={Registro} >
           <Text style={style.textbotaocad}>Finalizar</Text> 
          </TouchableOpacity>

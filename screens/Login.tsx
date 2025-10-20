@@ -41,13 +41,13 @@ export default function Login() {
         onChangeText={senha => setSenha(senha)}
       /> 
     <TouchableOpacity style={style.ent} onPress={Login} >
-            <Text style={style.textbotao}>Entrar</Text> 
+            <Text style={style.textbotaoent}>Entrar</Text> 
              </TouchableOpacity>
         
 
         
          <TouchableOpacity style={style.reg} onPress={()=> navigation.replace ('Registro')} >
-            <Text style={style.textbotao}>Registrar</Text> 
+            <Text style={style.textbotaocad}>Registrar</Text> 
              </TouchableOpacity>
         
        
