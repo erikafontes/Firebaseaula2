@@ -13,6 +13,7 @@ return(
         <Drawer.Screen name= 'Página Inicial' component = {Home}/>
         <Drawer.Screen name="Ficha de Ocorrência" component={Ocorrencia}/>
         <Drawer.Screen name="Relatório" component={ListarOcorrencia}/>
+        <Drawer.Screen name="Registrar novos crimes" component={Crimes}/>   
 
     </Drawer.Navigator>
 

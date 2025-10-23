@@ -48,7 +48,7 @@ export default function ListarOcorrencia() {
     }
 
     const editar  = (item: Ocorrencia) =>{
-        navigation.navigate ('Ficha de Ocorrencia', {ocorrencias: item});
+        navigation.navigate ('Ficha de Ocorrência', {ocorrencias: item});
     }
    return(
 

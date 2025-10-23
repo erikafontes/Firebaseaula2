@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { auth, firestore } from '../firebase';
 import { useNavigation } from '@react-navigation/native';
 import style from "../estilo"
@@ -51,47 +51,47 @@ const Registro = () =>{
 
   return (
     
-    <View style={style.container}>
-         <Image style={style.image} source={require('../assets/logo.png')}/> 
-          <Text style={style.textbotaoent}>FORMULÁRIO INTERNO PARA CONTROLE </Text>
-          <Text style={style.textbotaoent}>DE DENÚNCIAS DE MAUS-TRATOS AOS ANIMAIS</Text>
-   <View style = {style.inputview}> 
+    <ScrollView style={style.container2}>
+      <Image style={style.image} source={require('../assets/logo.png')}/> 
+      <Text style={style.texttitulo}>FORMULÁRIO INTERNO PARA CONTROLE  DE DENÚNCIAS DE MAUS-TRATOS AOS ANIMAIS</Text>
+
+      <View style = {style.inputview}> 
      
-    <View style={style.picker}>
-          <Picker mode='dropdown'
+      <View style={style.picker}>
+        <Picker mode='dropdown'
           prompt= "Fonte da denúncia"
           onValueChange={ texto => setFormOcorrencia
-        ({...formOcorrencia,
-        origem: texto})}
-        //selectedValue={formOcorrencia.}
-          >
-            <Picker.Item label = "1. Fonte da denúncia" value="0" />
-            <Picker.Item label = "Via WhatsApp"   value= "Via WhatsApp" />
-            <Picker.Item label = "Via Telefonema" value= "Telefonema"   />
-            <Picker.Item label = "Via Email"      value= "Via Email"    />
-            <Picker.Item label = "Presencial"     value= "Presencial"   />
-          </Picker>  
-  
-           <TextInput  
-        style= {style.textlog} 
-        placeholder='1.2. Data e hora do recebimento:'  
-        onChangeText={ texto => setFormOcorrencia
-        ({...formOcorrencia,
-        data: texto})
-       }
-        value={formOcorrencia.data}
-       />
+            ({...formOcorrencia,
+            origem: texto})}
+          //selectedValue={formOcorrencia.}
+        >
+          <Picker.Item label = "1. Fonte da denúncia" value="0" />
+          <Picker.Item label = "Via WhatsApp"   value= "Via WhatsApp" />
+          <Picker.Item label = "Via Telefonema" value= "Telefonema"   />
+          <Picker.Item label = "Via Email"      value= "Via Email"    />
+          <Picker.Item label = "Presencial"     value= "Presencial"   />
+        </Picker>  
 
-<Text style={style.textbotaoent}>                     2. DADOS DA DENÚNCIA:</Text>
+        <TextInput  
+          style= {style.textlog} 
+          placeholder='1.2. Data e hora do recebimento:'  
+          onChangeText={ texto => setFormOcorrencia
+          ({...formOcorrencia,
+          data: texto})
+          }
+          value={formOcorrencia.data}
+        />
+
+        <Text style={style.texttitulo}>2. DADOS DA DENÚNCIA:</Text>
          
         <TextInput  style= {style.textlog} 
-      placeholder='2.1. Endereço:' 
-       onChangeText={ texto =>setFormOcorrencia
-        ({...formOcorrencia,
-          endereco: texto})
-        }
-         value={formOcorrencia.endereco}
-       />
+          placeholder='2.1. Endereço:' 
+          onChangeText={ texto =>setFormOcorrencia
+            ({...formOcorrencia,
+              endereco: texto})
+          }
+          value={formOcorrencia.endereco}
+        />
 
  </View>
   <Picker mode='dropdown'
@@ -146,7 +146,7 @@ const Registro = () =>{
       }
        value={formOcorrencia.foto}
        />
-       <Text style={style.textbotaoent}>                  3. DADOS DO PROPRIETÀRIO:</Text>
+       <Text style={style.texttitulo}>3. DADOS DO PROPRIETÀRIO:</Text>
 
  <TextInput  style= {style.textlog} 
       placeholder='Nome:' 
@@ -198,7 +198,7 @@ const Registro = () =>{
     <TouchableOpacity style={style.reg} onPress={Registro} >
           <Text style={style.textbotaocad}>Finalizar</Text> 
          </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 

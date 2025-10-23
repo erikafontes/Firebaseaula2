@@ -8,6 +8,11 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+   container2: {
+    flex: 1,
+    backgroundColor: '#ffffffff',
+    padding:15
+  },
   texthome:{
    color: "#000000ff",
      fontSize: 25, 
@@ -35,7 +40,8 @@ export default StyleSheet.create({
     borderRadius:10, //borda redonda
     backgroundColor: "#1b8dffff", //cor do botão
     marginTop:15, //espaço externo do botão,
-    paddingHorizontal:150
+    paddingHorizontal:150,
+    marginBottom:50
   },
   textlog:{
     color: "#000000ff",
@@ -76,6 +82,28 @@ export default StyleSheet.create({
     backgroundColor: "#1b8dffff", //cor do botão
     marginTop:15, //espaço externo do botão,
     paddingHorizontal:150
-   }
+   },
+   texttitulo:{
+    fontSize:20,
+    alignContent:'center',
+    fontWeight:600,
+    marginBottom:10,
+    justifyContent:'center',
+    textAlign:'center',
+    marginTop:20
+   },
+   data:{
+    padding:10, //espaço nos cantos do botao
+    borderRadius:10, //borda redonda
+    backgroundColor: "#e9eaebff", //cor do botão
+    marginTop:10, //espaço externo do botão,
+    paddingHorizontal:100,
+   },
+  textdata:{
+
+     color: "#5d5c5cff",
+     fontSize: 15, 
+  
+  },
 }); 
 
