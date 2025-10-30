@@ -25,7 +25,7 @@ export default function Login() {
   return (
     <View style={style.container}>
 
-      52
+      
           <Image style={style.image} source={require('../assets/logo.png')}/> 
 
       <Text style= {style.texthome}>Tela de Login</Text>
